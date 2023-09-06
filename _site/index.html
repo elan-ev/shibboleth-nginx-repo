@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Shibboleth packages repository</title>
+    <!--
+    <link rel="stylesheet" href="./style.css">
+    <link rel="icon" href="./favicon.ico" type="image/x-icon">
+    -->
+  </head>
+  <body>
+    <main>
+        <h1>Shibboleth packages repository</h1>
+        To use Shibboleth with Nginx as reverse proxy for your application you need an Nginx shibboleth module and shibboleth build with FastCGI support. Both is not part of common Linux distributions but is available as source on <a href="https://github.com/nginx-shib/nginx-http-shibboleth">GitHub</a>. Here we provide this packages for you. They are build from original sources. To prevent name collision with official shibboleth package we renamed our build to <code>shibboleth-fastcgi</code>.
+
+        <h1>How to install</h1>
+        Run this commands to install shibboleth daemon and Nginx modules.<br>
+
+        <h2>Installation on RedHat Linux 7</h2>
+        <code>
+          # Install Shibboleth's recommended Service Provider repo as per<br>
+          # <a href="https://shibboleth.net/downloads/service-provider/RPMS/">https://shibboleth.net/downloads/service-provider/RPMS/</a><br>
+          cat <<-EOF > /etc/yum.repos.d/shibboleth.repo<br>
+          [shibboleth]<br>
+          name=Shibboleth (CentOS_7)<br>
+          # Please report any problems to https://shibboleth.atlassian.net/jira<br>
+          type=rpm-md<br>
+          mirrorlist=https://shibboleth.net/cgi-bin/mirrorlist.cgi/CentOS_7<br>
+          gpgcheck=1<br>
+          gpgkey=https://shibboleth.net/downloads/service-provider/RPMS/repomd.xml.key<br>
+          &nbsp &nbsp &nbsp &nbsp https://shibboleth.net/downloads/service-provider/RPMS/cantor.repomd.xml.key<br>
+          enabled=1<br>
+          EOF<br>
+          <br>
+          # Import Shibboleth's GPG keys<br>
+          rpm --import https://shibboleth.net/downloads/service-provider/RPMS/repomd.xml.key<br>
+          rpm --import https://shibboleth.net/downloads/service-provider/RPMS/cantor.repomd.xml.key<br>
+          <br>
+          # Install Shibboleth-nginx repository<br>
+          cat <<-EOF > /etc/yum.repos.d/shibboleth-nginx.repo<br>
+          [shibboleth-nginx]<br>
+          name=Shibboleth Nginx packages - RHEL\$releasever<br>
+          baseurl=https://wsmirnow.github.io/test-ghactions/rhel/\$releasever/<br>
+          gpgcheck=0<br>
+          EOF<br>
+          <br>
+          # Install Shibboleth Service Provider daemon and Nginx<br>
+          yum install -y epel-release<br>
+          yum install -y shibboleth-fastcgi nginx nginx-mod-http-shibboleth<br>
+        </code>
+
+        <h2>Installation on RedHat Linux 8</h2>
+        <code>
+          # Install Shibboleth's recommended Service Provider repo as per<br>
+          # <a href="https://shibboleth.net/downloads/service-provider/RPMS/">https://shibboleth.net/downloads/service-provider/RPMS/</a><br>
+          cat <<-EOF > /etc/yum.repos.d/shibboleth.repo<br>
+          [shibboleth]<br>
+          name=Shibboleth (CentOS_8)<br>
+          # Please report any problems to https://shibboleth.atlassian.net/jira<br>
+          type=rpm-md<br>
+          mirrorlist=https://shibboleth.net/cgi-bin/mirrorlist.cgi/CentOS_8<br>
+          gpgcheck=1<br>
+          gpgkey=https://shibboleth.net/downloads/service-provider/RPMS/repomd.xml.key<br>
+          &nbsp &nbsp &nbsp &nbsp https://shibboleth.net/downloads/service-provider/RPMS/cantor.repomd.xml.key<br>
+          enabled=1<br>
+          EOF<br>
+          <br>
+          # Import Shibboleth's GPG keys<br>
+          rpm --import https://shibboleth.net/downloads/service-provider/RPMS/repomd.xml.key<br>
+          rpm --import https://shibboleth.net/downloads/service-provider/RPMS/cantor.repomd.xml.key<br>
+          <br>
+          # Install Shibboleth-nginx repository<br>
+          cat <<-EOF > /etc/yum.repos.d/shibboleth-nginx.repo<br>
+          [shibboleth-nginx]<br>
+          name=Shibboleth Nginx packages - RHEL\$releasever<br>
+          baseurl=https://wsmirnow.github.io/test-ghactions/rhel/\$releasever/<br>
+          gpgcheck=0<br>
+          EOF<br>
+          <br>
+          # Install Shibboleth Service Provider daemon and Nginx<br>
+          dnf install -y epel-release<br>
+          dnf install -y shibboleth-fastcgi nginx nginx-mod-http-shibboleth<br>
+        </code>
+
+        <h2>Installation on Debian Linux</h2>
+        ToDo.
+    </main>
+  </body>
+</html>
