@@ -1,0 +1,47 @@
+name: Build Shibboleth packages for RHEL7
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - scripts/rhel/7/*
+      - .github/workflows/rhel7-build.yml
+  schedule:
+    - cron: '0 6 * * *'
+
+jobs:
+  rhel7-docker-build:
+    name: Build packages for RHEL7
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout git repo
+        uses: actions/checkout@v3
+        with:
+          lfs: true
+          sparse-checkout: |
+            repo/rhel/7
+            scripts/rhel/7
+          ssh-key: ${{ secrets.DEPLOY_SSH_KEY }}
+
+      - name: Build Shibboleth Nginx modules for RHEL7
+        run: >
+          docker run --rm
+          -v ${{ github.workspace }}/repo/rhel/7:/repo
+          -v ${{ github.workspace }}/scripts/rhel/7:/scripts:ro
+          centos:centos7
+          /bin/bash /scripts/cron-build-nginx-mods.sh
+
+      - name: Build Shibboleth package with FastCGI support for RHEL7
+        run: >
+          docker run --rm
+          -v ${{ github.workspace }}/repo/rhel/7:/repo
+          -v ${{ github.workspace }}/scripts/rhel/7:/scripts:ro
+          centos:centos7
+          /bin/bash /scripts/cron-build-shibboleth.sh
+
+      - name: Commit RHEL7 RPMs
+        run: |
+          git config --global user.name 'GitHub build bot'
+          git config --global user.email 'buildbot@users.noreply.github.com'
+          (git add repo/rhel/7/*.rpm && git commit -m "[automated] RHEL7 packages added" && git push) || echo "No new packages found, skip updating."
