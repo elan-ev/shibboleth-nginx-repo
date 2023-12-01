@@ -33,6 +33,7 @@ jobs:
           docker run --rm
           -v ${{ github.workspace }}/repo/rhel/7:/repo
           -v ${{ github.workspace }}/scripts/rhel/7:/scripts:ro
+          -e FORCE_RECREATE_REPO=$FORCE_RECREATE_REPO
           centos:centos7
           /bin/bash /scripts/update-repo.sh
         env:

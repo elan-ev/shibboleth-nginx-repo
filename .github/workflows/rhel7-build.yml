@@ -41,6 +41,7 @@ jobs:
           docker run --rm
           -v ${{ github.workspace }}/repo/rhel/7:/repo
           -v ${{ github.workspace }}/scripts/rhel/7:/scripts:ro
+          -e FORCE_REBUILD_SHIBBOLETH_MODULES=$FORCE_REBUILD_SHIBBOLETH_MODULES
           centos:centos7
           /bin/bash /scripts/cron-build-nginx-mods.sh
         env:
@@ -51,6 +52,7 @@ jobs:
           docker run --rm
           -v ${{ github.workspace }}/repo/rhel/7:/repo
           -v ${{ github.workspace }}/scripts/rhel/7:/scripts:ro
+          -e FORCE_REBUILD_SHIBBOLETH=$FORCE_REBUILD_SHIBBOLETH
           centos:centos7
           /bin/bash /scripts/cron-build-shibboleth.sh
         env:
