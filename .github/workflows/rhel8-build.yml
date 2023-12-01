@@ -9,6 +9,18 @@ on:
       - .github/workflows/rhel8-build.yml
   schedule:
     - cron: '0 5 * * *'
+  workflow_dispatch:
+    inputs:
+      force_rebuild_shibboleth:
+        description: 'Force rebuild Shibboleth'
+        required: false
+        default: false
+        type: boolean
+      force_rebuild_shibboleth_modules:
+        description: 'Force rebuild Nginx Shibboleth modules'
+        required: false
+        default: false
+        type: boolean
 
 jobs:
   rhel8-docker-build:
@@ -29,16 +41,22 @@ jobs:
           docker run --rm
           -v ${{ github.workspace }}/repo/rhel/8:/repo
           -v ${{ github.workspace }}/scripts/rhel/8:/scripts:ro
+          -e FORCE_REBUILD_SHIBBOLETH_MODULES=$FORCE_REBUILD_SHIBBOLETH_MODULES
           rockylinux:8
           /bin/bash /scripts/cron-build-nginx-mods.sh
+        env:
+          FORCE_REBUILD_SHIBBOLETH_MODULES: ${{ inputs.force_rebuild_shibboleth_modules }}
 
       - name: Build Shibboleth package with FastCGI support for RHEL8
         run: >
           docker run --rm
           -v ${{ github.workspace }}/repo/rhel/8:/repo
           -v ${{ github.workspace }}/scripts/rhel/8:/scripts:ro
+          -e FORCE_REBUILD_SHIBBOLETH=$FORCE_REBUILD_SHIBBOLETH
           rockylinux:8
           /bin/bash /scripts/cron-build-shibboleth.sh
+        env:
+          FORCE_REBUILD_SHIBBOLETH: ${{ inputs.force_rebuild_shibboleth }}
 
       - name: Commit RHEL7 RPMs
         run: |

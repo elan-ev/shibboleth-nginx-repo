@@ -7,6 +7,13 @@ on:
     paths:
       - repo/rhel/8/*.rpm
       - .github/workflows/rhel8-update-repo.yml
+  workflow_dispatch:
+    inputs:
+      force_recreate_repo:
+        description: 'Force recreate RPM repository'
+        required: false
+        type: boolean
+        default: false
 
 jobs:
   rhel8-update-repo:
@@ -26,8 +33,11 @@ jobs:
           docker run --rm
           -v ${{ github.workspace }}/repo/rhel/8:/repo
           -v ${{ github.workspace }}/scripts/rhel/8:/scripts:ro
+          -e FORCE_RECREATE_REPO=$FORCE_RECREATE_REPO
           rockylinux:8
           /bin/bash /scripts/update-repo.sh
+        env:
+          FORCE_RECREATE_REPO: ${{ inputs.force_recreate_repo }}
 
       - name: Commit RHEL8 RPM repo
         run: |
