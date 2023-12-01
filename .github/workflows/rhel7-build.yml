@@ -9,6 +9,18 @@ on:
       - .github/workflows/rhel7-build.yml
   schedule:
     - cron: '0 6 * * *'
+  workflow_dispatch:
+    inputs:
+      force_rebuild_shibboleth:
+        description: 'Force rebuild Shibboleth'
+        required: false
+        default: false
+        type: boolean
+      force_rebuild_shibboleth_modules:
+        description: 'Force rebuild Nginx Shibboleth modules'
+        required: false
+        default: false
+        type: boolean
 
 jobs:
   rhel7-docker-build:
@@ -31,6 +43,8 @@ jobs:
           -v ${{ github.workspace }}/scripts/rhel/7:/scripts:ro
           centos:centos7
           /bin/bash /scripts/cron-build-nginx-mods.sh
+        env:
+          FORCE_REBUILD_SHIBBOLETH_MODULES: ${{ inputs.force_rebuild_shibboleth_modules }}
 
       - name: Build Shibboleth package with FastCGI support for RHEL7
         run: >
@@ -39,6 +53,8 @@ jobs:
           -v ${{ github.workspace }}/scripts/rhel/7:/scripts:ro
           centos:centos7
           /bin/bash /scripts/cron-build-shibboleth.sh
+        env:
+          FORCE_REBUILD_SHIBBOLETH: ${{ inputs.force_rebuild_shibboleth }}
 
       - name: Commit RHEL7 RPMs
         run: |

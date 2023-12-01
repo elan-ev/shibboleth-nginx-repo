@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# If true, shibboleth will be rebuild, regardles of aviability of the package in repository.
+_FORCE_REBUILD_SHIBBOLETH="${FORCE_REBUILD_SHIBBOLETH:-false}"
+
 set -e
 # Install Shibboleth's recommended Service Provider repo as per
 # https://shibboleth.net/downloads/service-provider/RPMS/
@@ -33,7 +36,7 @@ yum install -y epel-release yum-utils
 __SHIBBOLETH_VERSION="$(repoquery -q --qf '%{version}' shibboleth)"
 __SHIBBOLETH_FASTCGI_VERSION="$(repoquery -q --qf '%{version}' shibboleth-fastcgi)"
 
-if [ -z "$__SHIBBOLETH_FASTCGI_VERSION" ] || [ "$__SHIBBOLETH_VERSION" != "$__SHIBBOLETH_FASTCGI_VERSION" ]
+if [ -z "$__SHIBBOLETH_FASTCGI_VERSION" ] || [ "$__SHIBBOLETH_VERSION" != "$__SHIBBOLETH_FASTCGI_VERSION" ] || [ "true" == "$_FORCE_REBUILD_SHIBBOLETH" ]
 then
     sh /scripts/build-shibboleth.sh
 else
