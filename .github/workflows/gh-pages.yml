@@ -6,7 +6,9 @@ on:
       - main
     paths:
       - _site/**
+      - repo/**
       - .github/workflows/gh-pages.yml
+  workflow_dispatch:
 
 jobs:
   deploy-gh-pages:
