@@ -1,0 +1,17 @@
+Origin: Shibboleth Nginx Module Repository
+Suite: stable
+Codename: bookworm
+Version: 1.0
+Architectures: amd64
+Components: non-free
+Description: This repository provides a build of Shibboleth auth request module for Nginx.
+Date: Wed, 21 Feb 2024 12:33:12 +0000
+MD5Sum:
+ 75cbcaf3ae34ff2df25647198dde7838 528 non-free/binary-amd64/Packages
+ 9a0a2449ca0ef807091aae3cb2b1fc95 375 non-free/binary-amd64/Packages.gz
+SHA1:
+ 47f8de87e0b85f1aebe9b6263daa3dc6c4d76428 528 non-free/binary-amd64/Packages
+ 6db95ec8b5ce0c69423b9d6ef2206026c1abd345 375 non-free/binary-amd64/Packages.gz
+SHA256:
+ 89398a527bfab1370d7b2f1d5a5b4ac5abff4f67dfb4804f928a707d1a029b46 528 non-free/binary-amd64/Packages
+ 880acbbb433e9d1ac64bee7769666a0fdd32b3ec596d3aacc91e9ade6a9c6095 375 non-free/binary-amd64/Packages.gz

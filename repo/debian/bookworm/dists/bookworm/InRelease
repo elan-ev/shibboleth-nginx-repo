@@ -1,0 +1,36 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+Origin: Shibboleth Nginx Module Repository
+Suite: stable
+Codename: bookworm
+Version: 1.0
+Architectures: amd64
+Components: non-free
+Description: This repository provides a build of Shibboleth auth request module for Nginx.
+Date: Wed, 21 Feb 2024 12:33:12 +0000
+MD5Sum:
+ 75cbcaf3ae34ff2df25647198dde7838 528 non-free/binary-amd64/Packages
+ 9a0a2449ca0ef807091aae3cb2b1fc95 375 non-free/binary-amd64/Packages.gz
+SHA1:
+ 47f8de87e0b85f1aebe9b6263daa3dc6c4d76428 528 non-free/binary-amd64/Packages
+ 6db95ec8b5ce0c69423b9d6ef2206026c1abd345 375 non-free/binary-amd64/Packages.gz
+SHA256:
+ 89398a527bfab1370d7b2f1d5a5b4ac5abff4f67dfb4804f928a707d1a029b46 528 non-free/binary-amd64/Packages
+ 880acbbb433e9d1ac64bee7769666a0fdd32b3ec596d3aacc91e9ade6a9c6095 375 non-free/binary-amd64/Packages.gz
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAEBCgAdFiEE+tfQOzhsifEILKfLehYWe/cdL5EFAmXWKWAACgkQehYWe/cd
+L5H+3xAAhgLFEgXbiPYckmZHdiudHeVjXezTFUvmfAvQ6OlVpykCqP5dwQpkM3H3
+Kqt38WbYaWj3VnxCI1g2Jc9vPlSAZToo7sni8XmDEl4YhWjL1SvAH7TgPdjJAnXT
+zL+/FSuZNjSjQ3ox1pvsRYdJUDvoBgSuuhBX0naO9MJsh/uIBwC6M3S9edOI4ci0
+UCLOyvVyUBOZYbbSTJJqBUc/OREFzEEsuSNUVscFBn1mmyl0SXG4k3+MDPO7Dd/g
+tKes+HtDNallWJlC8Bzrtxg32oURzg4Yf755ASzjgOeg96wyhIb4KhBITKTnbtL6
+MAp9i5vU/if0qzlYJ49wzSnx4YXynGlqEYHhZXKNLVTgZZyhDMB/77Yg96mwwI2x
+zGIt9j/jkClNCofjL26YW9kXjtN8HxI2Dw4bFZ+BskDJnVxTJGHHm4YR/FFJfbe8
+Jg9LUIgG2jcDxWUSOwUSYraHdeDI8bI1lUg7HZnS8n2XgMsPEWczgp9nugAdbsPm
+y4n/RLU7eHz8DLQpjoRpzRX1PTe7iNLb219H1H/CedsMoF1eVcEAd9zHc2wLdLry
+pmacKYPNLA2xbEH+2Bz2T/55XJf6GWO4I7QVMZb+RZQXyoRe2YRIJl8Wy35coOVE
+AdppRMjvVSShEgo8EDyGEtTobP1EgQpVMSifc36sSZao/J1qdIo=
+=83Oq
+-----END PGP SIGNATURE-----

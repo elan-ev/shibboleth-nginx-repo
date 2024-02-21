@@ -85,7 +85,20 @@
         </code>
 
         <h2>Installation on Debian Linux</h2>
-        ToDo.
+        <p>
+          Shibboleth service provider (SP) application is delivered by Debian itself. The missing Shibboleth Nginx module is provided by this repository. Following steps describes the installation on Debian Bookworm.<br>
+        </p>
+        <code>
+          # Install Shibboleth Nginx module repository<br>
+          apt install -y wget <br>
+          wget -O /etc/apt/trusted.gpg.d/nginx-mod-shibboleth.asc https://elan-ev.github.io/shibboleth-nginx-repo/gpgkey.asc<br>
+          cat <<EOF > /etc/apt/sources.list.d/nginx-mod-shibboleth.list<br>
+          deb https://elan-ev.github.io/shibboleth-nginx-repo/debian/bookworm bookworm non-free<br>
+          EOF<br>
+          apt update<br>
+          # Install Shibboleth Nginx module<br>
+          apt install -y nginx libnginx-mod-http-shibboleth<br>
+        </code>
     </main>
   </body>
 </html>
