@@ -2,6 +2,8 @@
 
 _PWD="$PWD"
 set -e
+apt update
+apt install -y dpkg-dev
 mkdir -p /repo/dists/bookworm/non-free/binary-amd64
 cd /repo/
 dpkg-scanpackages --arch amd64 --multiversion pool/ > dists/bookworm/non-free/binary-amd64/Packages
