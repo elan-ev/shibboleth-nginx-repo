@@ -27,7 +27,7 @@ install -o root -g root -m 0644 -p nginx-"$NGINX_VERSION"/objs/ngx_http_shibbole
 echo "load_module modules/ngx_http_shibboleth_module.so;" > mod-http-shibboleth.conf
 install -o root -g root -m 0644 -p mod-http-shibboleth.conf "$PKG_ROOT/usr/share/nginx/modules-available/"
 mkdir -p "$PKG_ROOT/usr/share/doc/libnginx-mod-http-shibboleth/"
-cat <<-EOF "$PKG_ROOT/usr/share/doc/libnginx-mod-http-shibboleth/copyright"
+cat <<-EOF > "$PKG_ROOT/usr/share/doc/libnginx-mod-http-shibboleth/copyright"
 Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: nginx-http-shibboleth
 Upstream-Contact: David Beitey
