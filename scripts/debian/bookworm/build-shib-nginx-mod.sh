@@ -22,8 +22,8 @@ cd nginx-"$NGINX_VERSION"
 make modules
 cd ..
 PKG_ROOT="libnginx-mod-http-shibboleth_$NGINX_VERSION.$_NGINX_MOD_SHIBBOLETH_VERSION-1_amd64"
-mkdir -p "$PKG_ROOT/usr/share/nginx/modules" "$PKG_ROOT/usr/share/nginx/modules-available"
-install -o root -g root -m 0644 -p nginx-"$NGINX_VERSION"/objs/ngx_http_shibboleth_module.so "$PKG_ROOT/usr/share/nginx/modules/"
+mkdir -p "$PKG_ROOT/usr/lib/nginx/modules" "$PKG_ROOT/usr/share/nginx/modules-available"
+install -o root -g root -m 0644 -p nginx-"$NGINX_VERSION"/objs/ngx_http_shibboleth_module.so "$PKG_ROOT/usr/lib/nginx/modules/"
 echo "load_module modules/ngx_http_shibboleth_module.so;" > mod-http-shibboleth.conf
 install -o root -g root -m 0644 -p mod-http-shibboleth.conf "$PKG_ROOT/usr/share/nginx/modules-available/"
 mkdir -p "$PKG_ROOT/DEBIAN"
