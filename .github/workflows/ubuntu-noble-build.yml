@@ -1,0 +1,49 @@
+name: Build Shibboleth Nginx Module for Ubuntu Noble
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - scripts/ubuntu/noble/*
+      - .github/workflows/ubuntu-noble-build.yml
+  schedule:
+    - cron: '0 2 * * *'
+  workflow_dispatch:
+    inputs:
+      force_rebuild_shibboleth_modules:
+        description: 'Force rebuild Nginx Shibboleth modules'
+        required: false
+        default: false
+        type: boolean
+
+jobs:
+  ubuntu-noble-docker-build:
+    name: Build packages for Ubuntu Noble
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout git repo
+        uses: actions/checkout@v3
+        with:
+          lfs: true
+          sparse-checkout: |
+            repo/ubuntu/noble
+            scripts/ubuntu/noble
+          ssh-key: ${{ secrets.DEPLOY_SSH_KEY }}
+
+      - name: Build Shibboleth Nginx modules for Ubuntu Noble
+        run: >
+          docker run --rm
+          -v ${{ github.workspace }}/repo/ubuntu/noble:/repo
+          -v ${{ github.workspace }}/scripts/ubuntu/noble:/scripts:ro
+          -e FORCE_REBUILD_SHIBBOLETH_MODULES=$FORCE_REBUILD_SHIBBOLETH_MODULES
+          ubuntu:noble
+          /bin/bash /scripts/cron-build-shib-nginx-mod.sh
+        env:
+          FORCE_REBUILD_SHIBBOLETH_MODULES: ${{ inputs.force_rebuild_shibboleth_modules }}
+
+      - name: Commit build package
+        run: |
+          git config --global user.name 'GitHub build bot'
+          git config --global user.email 'buildbot@users.noreply.github.com'
+          (git add repo/ubuntu/noble/pool/multiverse/*.deb && git commit -m "[automated] Ubuntu Noble package added" && git push) || echo "No new packages found, skip updating."
