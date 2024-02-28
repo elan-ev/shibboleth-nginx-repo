@@ -3,7 +3,7 @@
 _NGINX_HEADERS_MORE_VERSION="0.34"
 _NGINX_SHIBBOLETH_VERSION="2.0.2"
 
-set -ex
+set -e
 
 # Install EPEL for nginx sources
 yum install -y epel-release

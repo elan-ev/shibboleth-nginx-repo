@@ -4,7 +4,7 @@
 # uncomment it to build latest available version.
 #_SHIBBOLETH_VERSION="3.4.0"
 
-set -ex
+set -e
 
 # Install Shibboleth's recommended Service Provider repo as per
 # https://shibboleth.net/downloads/service-provider/RPMS/
