@@ -8,7 +8,7 @@ on:
       - scripts/ubuntu/noble/*
       - .github/workflows/ubuntu-noble-build.yml
   schedule:
-    - cron: '0 2 * * *'
+    - cron: '20 4 * * *'
   workflow_dispatch:
     inputs:
       force_rebuild_shibboleth_modules:
