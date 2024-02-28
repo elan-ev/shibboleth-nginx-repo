@@ -26,11 +26,12 @@ cat <<EOF > /etc/yum.repos.d/Shibboleth-Nginx.repo
 [shibboleth-nginx]
 name=Shibboleth Nginx packages - RHEL\$releasever
 baseurl=file:///repo/
-gpgcheck=0
-#gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
+gpgcheck=1
+gpgkey=https://elan-ev.github.io/shibboleth-nginx-repo/gpgkey.asc
 enabled=1
 EOF
 
+rpm --import https://elan-ev.github.io/shibboleth-nginx-repo/gpgkey.asc
 yum install -y epel-release yum-utils
 
 __SHIBBOLETH_VERSION="$(repoquery -q --qf '%{version}' shibboleth)"
