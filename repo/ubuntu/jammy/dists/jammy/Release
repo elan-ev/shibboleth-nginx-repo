@@ -1,0 +1,17 @@
+Origin: Shibboleth Nginx Module Repository
+Suite: stable
+Codename: jammy
+Version: 1.0
+Architectures: amd64
+Components: multiverse
+Description: This repository provides a build of Shibboleth auth request module for Nginx.
+Date: Wed, 28 Feb 2024 10:40:10 +0000
+MD5Sum:
+ 41a86757f18fb67b3b78cb534e8a6a93 530 multiverse/binary-amd64/Packages
+ a0eb654f700338f652c34db7c43ac5b2 377 multiverse/binary-amd64/Packages.gz
+SHA1:
+ c90c9fc65327ccc5feedb8d3738408cf08e961cc 530 multiverse/binary-amd64/Packages
+ 544dbd431ab24bd5d24710b6b6e5d3ce08e9060e 377 multiverse/binary-amd64/Packages.gz
+SHA256:
+ 4291b2c735f44f96f957b0eec7e9a7d4ba1d9e180b78c185a65388d9c78fe6dd 530 multiverse/binary-amd64/Packages
+ b399a8fef4ce290c7d47b50eda0798a89ff80cf99313bdeb8663c2c6d60d0b3a 377 multiverse/binary-amd64/Packages.gz

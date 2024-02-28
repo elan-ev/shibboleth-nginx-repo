@@ -1,0 +1,13 @@
+Package: libnginx-mod-http-shibboleth
+Version: 1.18.0.2.0.2-1
+Architecture: amd64
+Maintainer: ELAN e.V. <helpdesk@elan-ev.de>
+Depends: nginx-common (>= 1.18.0)
+Filename: pool/multiverse/libnginx-mod-http-shibboleth_1.18.0.2.0.2-1_amd64.deb
+Size: 35996
+MD5sum: efbc591ba7c9b80e831401f2bbb502e3
+SHA1: 3717c502503c2c2729ee4098dc67403199e3c92c
+SHA256: 80dfce5efb3c1090781df5bf130e65abc78454967040adcce09f0803ccb72ac6
+Homepage: https://github.com/nginx-shib/nginx-http-shibboleth
+Description: Shibboleth auth request module for Nginx
+
