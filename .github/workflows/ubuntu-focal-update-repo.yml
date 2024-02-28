@@ -45,4 +45,4 @@ jobs:
         run: |
           git config --global user.name 'GitHub build bot'
           git config --global user.email 'buildbot@users.noreply.github.com'
-          (git add repo/ubuntu/focal/dists/bookworm/Release* && git add repo/ubuntu/focal/dists/bookworm/InRelease && git add repo/ubuntu/focal/dists/bookworm/multiverse/binary-amd64/Packages* && git commit -m "[automated] Ubuntu Focal repo updated" && git push) || echo "No new packages found, skip updating."
+          (git add repo/ubuntu/focal/dists/multiverse/Release* && git add repo/ubuntu/focal/dists/multiverse/InRelease && git add repo/ubuntu/focal/dists/multiverse/multiverse/binary-amd64/Packages* && git commit -m "[automated] Ubuntu Focal repo updated" && git push) || echo "No new packages found, skip updating."
