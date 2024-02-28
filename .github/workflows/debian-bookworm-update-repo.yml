@@ -35,7 +35,7 @@ jobs:
           -v ${{ github.workspace }}/scripts/debian/bookworm:/scripts:ro
           -e FORCE_RECREATE_REPO=$FORCE_RECREATE_REPO
           -e GPG_SIGNING_KEY=$GPG_SIGNING_KEY
-          debian:12
+          debian:bookworm
           /bin/bash /scripts/update-repo.sh
         env:
           FORCE_RECREATE_REPO: ${{ inputs.force_recreate_repo }}

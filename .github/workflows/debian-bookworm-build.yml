@@ -37,7 +37,7 @@ jobs:
           -v ${{ github.workspace }}/repo/debian/bookworm:/repo
           -v ${{ github.workspace }}/scripts/debian/bookworm:/scripts:ro
           -e FORCE_REBUILD_SHIBBOLETH_MODULES=$FORCE_REBUILD_SHIBBOLETH_MODULES
-          debian:12
+          debian:bookworm
           /bin/bash /scripts/cron-build-shib-nginx-mod.sh
         env:
           FORCE_REBUILD_SHIBBOLETH_MODULES: ${{ inputs.force_rebuild_shibboleth_modules }}
