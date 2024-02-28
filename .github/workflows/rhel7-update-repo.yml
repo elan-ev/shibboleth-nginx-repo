@@ -34,10 +34,12 @@ jobs:
           -v ${{ github.workspace }}/repo/rhel/7:/repo
           -v ${{ github.workspace }}/scripts/rhel/7:/scripts:ro
           -e FORCE_RECREATE_REPO=$FORCE_RECREATE_REPO
+          -e GPG_SIGNING_KEY=$GPG_SIGNING_KEY
           centos:centos7
           /bin/bash /scripts/update-repo.sh
         env:
           FORCE_RECREATE_REPO: ${{ inputs.force_recreate_repo }}
+          GPG_SIGNING_KEY: ${{ secrets.GPG_SIGNING_KEY }}
 
       - name: Commit RHEL7 RPM repo
         run: |
