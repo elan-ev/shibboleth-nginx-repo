@@ -99,6 +99,22 @@
           # Install Shibboleth Nginx module<br>
           apt install -y nginx libnginx-mod-http-shibboleth<br>
         </code>
+
+        <h2>Installation on Ubuntu Linux</h2>
+        <p>
+          Shibboleth service provider (SP) application is delivered by Ubuntu itself. The missing Shibboleth Nginx module is provided by this repository. Following steps describes the installation on Ubuntu Jammy. But you can also install it on different Ubuntu versions replacing the codename.<br>
+        </p>
+        <code>
+          # Install Shibboleth Nginx module repository<br>
+          apt install -y wget <br>
+          wget -O /etc/apt/trusted.gpg.d/nginx-mod-shibboleth.asc https://elan-ev.github.io/shibboleth-nginx-repo/gpgkey.asc<br>
+          cat <<-EOF > /etc/apt/sources.list.d/nginx-mod-shibboleth.list<br>
+          deb https://elan-ev.github.io/shibboleth-nginx-repo/ubuntu/jammy jammy multiverse<br>
+          EOF<br>
+          apt update<br>
+          # Install Shibboleth Nginx module<br>
+          apt install -y nginx libnginx-mod-http-shibboleth<br>
+        </code>
     </main>
   </body>
 </html>
