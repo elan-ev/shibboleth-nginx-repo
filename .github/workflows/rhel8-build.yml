@@ -42,10 +42,12 @@ jobs:
           -v ${{ github.workspace }}/repo/rhel/8:/repo
           -v ${{ github.workspace }}/scripts/rhel/8:/scripts:ro
           -e FORCE_REBUILD_SHIBBOLETH_MODULES=$FORCE_REBUILD_SHIBBOLETH_MODULES
+          -e GPG_SIGNING_KEY=$GPG_SIGNING_KEY
           rockylinux:8
           /bin/bash /scripts/cron-build-nginx-mods.sh
         env:
           FORCE_REBUILD_SHIBBOLETH_MODULES: ${{ inputs.force_rebuild_shibboleth_modules }}
+          GPG_SIGNING_KEY: ${{ secrets.GPG_SIGNING_KEY }}
 
       - name: Build Shibboleth package with FastCGI support for RHEL8
         run: >
@@ -53,10 +55,12 @@ jobs:
           -v ${{ github.workspace }}/repo/rhel/8:/repo
           -v ${{ github.workspace }}/scripts/rhel/8:/scripts:ro
           -e FORCE_REBUILD_SHIBBOLETH=$FORCE_REBUILD_SHIBBOLETH
+          -e GPG_SIGNING_KEY=$GPG_SIGNING_KEY
           rockylinux:8
           /bin/bash /scripts/cron-build-shibboleth.sh
         env:
           FORCE_REBUILD_SHIBBOLETH: ${{ inputs.force_rebuild_shibboleth }}
+          GPG_SIGNING_KEY: ${{ secrets.GPG_SIGNING_KEY }}
 
       - name: Commit RHEL7 RPMs
         run: |

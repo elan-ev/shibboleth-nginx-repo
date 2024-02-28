@@ -43,9 +43,12 @@
           [shibboleth-nginx]<br>
           name=Shibboleth Nginx packages - RHEL\$releasever<br>
           baseurl=https://elan-ev.github.io/shibboleth-nginx-repo/rhel/\$releasever/<br>
-          gpgcheck=0<br>
+          gpgcheck=1<br>
+          gpgkey=https://elan-ev.github.io/shibboleth-nginx-repo/gpgkey.asc<br>
+          enabled=1<br>
           EOF<br>
           <br>
+          rpm --import https://elan-ev.github.io/shibboleth-nginx-repo/gpgkey.asc<br>
           # Install Shibboleth Service Provider daemon and Nginx<br>
           yum install -y epel-release<br>
           yum install -y shibboleth-fastcgi nginx nginx-mod-http-shibboleth<br>
@@ -76,9 +79,12 @@
           [shibboleth-nginx]<br>
           name=Shibboleth Nginx packages - RHEL\$releasever<br>
           baseurl=https://elan-ev.github.io/shibboleth-nginx-repo/rhel/\$releasever/<br>
-          gpgcheck=0<br>
+          gpgcheck=1<br>
+          gpgkey=https://elan-ev.github.io/shibboleth-nginx-repo/gpgkey.asc<br>
+          enabled=1<br>
           EOF<br>
           <br>
+          rpm --import https://elan-ev.github.io/shibboleth-nginx-repo/gpgkey.asc<br>
           # Install Shibboleth Service Provider daemon and Nginx<br>
           dnf install -y epel-release<br>
           dnf install -y shibboleth-fastcgi nginx nginx-mod-http-shibboleth<br>

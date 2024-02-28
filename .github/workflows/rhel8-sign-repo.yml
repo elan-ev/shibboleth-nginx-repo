@@ -1,22 +1,10 @@
-name: Udpate RHEL8 RPM repo
+name: Sign RHEL8 RPM repo
 
 on:
-  push:
-    branches:
-      - main
-    paths:
-      - repo/rhel/8/*.rpm
-      - .github/workflows/rhel8-update-repo.yml
   workflow_dispatch:
-    inputs:
-      force_recreate_repo:
-        description: 'Force recreate RPM repository'
-        required: false
-        type: boolean
-        default: false
 
 jobs:
-  rhel8-update-repo:
+  rhel8-sign-repo:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout git repo
@@ -28,21 +16,19 @@ jobs:
             scripts/rhel/8
           ssh-key: ${{ secrets.DEPLOY_SSH_KEY }}
 
-      - name: Update RHEL8 RPM repository
+      - name: Sign RHEL8 RPM repository
         run: >
           docker run --rm
           -v ${{ github.workspace }}/repo/rhel/8:/repo
           -v ${{ github.workspace }}/scripts/rhel/8:/scripts:ro
-          -e FORCE_RECREATE_REPO=$FORCE_RECREATE_REPO
           -e GPG_SIGNING_KEY=$GPG_SIGNING_KEY
           rockylinux:8
-          /bin/bash /scripts/update-repo.sh
+          /bin/bash /scripts/sign-packages-and-repo.sh
         env:
-          FORCE_RECREATE_REPO: ${{ inputs.force_recreate_repo }}
           GPG_SIGNING_KEY: ${{ secrets.GPG_SIGNING_KEY }}
 
       - name: Commit RHEL8 RPM repo
         run: |
           git config --global user.name 'GitHub build bot'
           git config --global user.email 'buildbot@users.noreply.github.com'
-          (git add repo/rhel/8/repodata && git commit -m "[automated] RHEL8 RPM repo updated" && git push) || echo "No new packages found, skip updating."
+          (git add repo/rhel/8/*.rpm && git add repo/rhel/8/repodata && git commit -m "[automated] RHEL8 RPM repo signed" && git push) || echo "No new packages found, skip updating."

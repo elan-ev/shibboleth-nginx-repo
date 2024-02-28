@@ -3,13 +3,13 @@
 _NGINX_HEADERS_MORE_VERSION="0.34"
 _NGINX_SHIBBOLETH_VERSION="2.0.2"
 
-set -ex
+set -e
 
 # Install EPEL for nginx sources
 dnf install -y epel-release
 
 # install build environment and sownload sources
-dnf install -y make gcc rpmdevtools 'dnf-command(download)' sed
+dnf install -y make gcc rpmdevtools rpm-sign gpg 'dnf-command(download)' sed
 dnf download --source nginx
 dnf builddep -y nginx-*.src.rpm
 rpm --install nginx-*.src.rpm
@@ -30,6 +30,18 @@ sed -i 's|^%{_libdir}/nginx/modules/ngx_stream_module.so$|%{_libdir}/nginx/modul
 
 # build nginx with modules
 rpmbuild --undefine=_disable_source_fetch -bb ~/rpmbuild/SPECS/nginx.spec
+
+# sign package
+if [ -z "$GPG_SIGNING_KEY" ]; then
+    echo "No GPG key provided. This is ok, if you test the build. But IT SHOULD NEVER HAPPEN ON REGULAR BUILD! Skip signing RPM package."
+else
+    echo -n "$GPG_SIGNING_KEY" | base64 --decode | gpg --import
+    GPG_NAME="$(gpg --list-secret-keys | grep uid | sed 's/uid[ ]*//')"
+    echo "%_gpg_name $GPG_NAME" >> ~/.rpmmacros
+    rpm --addsign \
+        ~/rpmbuild/RPMS/x86_64/nginx-mod-http-headers-more-filter-[0-9]*.el8.x86_64.rpm \
+        ~/rpmbuild/RPMS/x86_64/nginx-mod-http-shibboleth-[0-9]*.el8.x86_64.rpm
+fi
 
 # update repo
 mv ~/rpmbuild/RPMS/x86_64/nginx-mod-http-headers-more-filter-[0-9]*.el8.x86_64.rpm /repo/
