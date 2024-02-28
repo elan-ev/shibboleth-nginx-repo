@@ -37,9 +37,9 @@ hash_files() {
 cd dists/jammy
 cat <<EOF > Release
 Origin: Shibboleth Nginx Module Repository
-Suite: stable
+Suite: jammy
 Codename: jammy
-Version: 1.0
+Version: 22.04
 Architectures: amd64
 Components: multiverse
 Description: This repository provides a build of Shibboleth auth request module for Nginx.

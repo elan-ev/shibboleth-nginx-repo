@@ -37,9 +37,9 @@ hash_files() {
 cd dists/focal
 cat <<EOF > Release
 Origin: Shibboleth Nginx Module Repository
-Suite: stable
+Suite: focal
 Codename: focal
-Version: 1.0
+Version: 20.04
 Architectures: amd64
 Components: multiverse
 Description: This repository provides a build of Shibboleth auth request module for Nginx.
