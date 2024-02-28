@@ -1,0 +1,48 @@
+name: Udpate Ubuntu Focal repo
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - repo/ubuntu/focal/pool/multiverse/*.deb
+      - .github/workflows/ubuntu-focal-update-repo.yml
+  workflow_dispatch:
+    inputs:
+      force_recreate_repo:
+        description: 'Force recreate Ubuntu repository'
+        required: false
+        type: boolean
+        default: false
+
+jobs:
+  ubuntu-focal-update-repo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout git repo
+        uses: actions/checkout@v3
+        with:
+          lfs: true
+          sparse-checkout: |
+            repo/ubuntu/focal
+            scripts/ubuntu/focal
+          ssh-key: ${{ secrets.DEPLOY_SSH_KEY }}
+
+      - name: Update Ubuntu Focal repository
+        run: >
+          docker run --rm
+          -v ${{ github.workspace }}/repo/ubuntu/focal:/repo
+          -v ${{ github.workspace }}/scripts/ubuntu/focal:/scripts:ro
+          -e FORCE_RECREATE_REPO=$FORCE_RECREATE_REPO
+          -e GPG_SIGNING_KEY=$GPG_SIGNING_KEY
+          ubuntu:focal
+          /bin/bash /scripts/update-repo.sh
+        env:
+          FORCE_RECREATE_REPO: ${{ inputs.force_recreate_repo }}
+          GPG_SIGNING_KEY: ${{ secrets.GPG_SIGNING_KEY }}
+
+      - name: Commit Ubuntu Focal repo
+        run: |
+          git config --global user.name 'GitHub build bot'
+          git config --global user.email 'buildbot@users.noreply.github.com'
+          (git add repo/ubuntu/focal/dists/bookworm/Release* && git add repo/ubuntu/focal/dists/bookworm/InRelease && git add repo/ubuntu/focal/dists/bookworm/multiverse/binary-amd64/Packages* && git commit -m "[automated] Ubuntu Focal repo updated" && git push) || echo "No new packages found, skip updating."
