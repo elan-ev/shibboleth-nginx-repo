@@ -1,0 +1,36 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+Origin: Shibboleth Nginx Module Repository
+Suite: stable
+Codename: focal
+Version: 1.0
+Architectures: amd64
+Components: multiverse
+Description: This repository provides a build of Shibboleth auth request module for Nginx.
+Date: Wed, 28 Feb 2024 10:19:18 +0000
+MD5Sum:
+ 74f6bec657af62b9dc7f4b414c619d02 530 multiverse/binary-amd64/Packages
+ b3920749596ff47e07441a75f3eefb99 375 multiverse/binary-amd64/Packages.gz
+SHA1:
+ a8ce8273780a1ec9464be0cb2edfac8695955d88 530 multiverse/binary-amd64/Packages
+ 3e28a3a081364810e972a3dc6ca7d96d458fad36 375 multiverse/binary-amd64/Packages.gz
+SHA256:
+ d2fbc9b056273e958f60ec46efd48159f3bd5498be2ea8a77eab3ab98c27bd1c 530 multiverse/binary-amd64/Packages
+ e2c6e4a8a34a0b5b7a0f1e4fb71e645f41613e5185123ab998c429f60becbe1c 375 multiverse/binary-amd64/Packages.gz
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAEBCgAdFiEE+tfQOzhsifEILKfLehYWe/cdL5EFAmXfCKcACgkQehYWe/cd
+L5HpRA/6Anw4TYVr2H67fxZj6cR/Vw6RFTZGWqIJhX8QZa8rVzHPSjx81Ay/ToqZ
+ytg/CoketgXhH4p1iNO4VdJPcxTmo1uk2FI6HcmbnltOvqiBF2hBP8BORvaMTOgx
+Nyu7Uc5XRCvniBEOd8BX7AEoMXyfOFlUGhW57IoBr9N3whIf9tWYx/Qlt8eIyoTy
+jKpbA/9g2MTDMA9MK8CiDDwdJShDv3Ygs2ua3vYC+7H355SxP8ttqysYCUUFuVKK
+hVy222ArulgpE46RF8Txs4NQbWXY4zeB4g5EaWYqqCbQkYeMD7sHrYcgxC8qdY4b
+KvyEFdfBIYB1jul9gb7FcEc0l2e+DVTSLaYhVKO8WLFs4ocnPbvbmaVGq258Nc2k
+K1JtV10cF3vc42ATlUtTzEfQyGMzzlbEQzvJlf6pn/4O8SXH0E2OyZ5Yv6KznAV0
+nl0Z7L5wvQnYGUm7+AskLfYef9j7XDoB+6gl6QifB0oRzPgWdIpIDzmYhsqjXL6O
+qIRRNrvWeeuWAGhS3DQPyyCnElDyCuOlcwq+Hqvswru2G40N8Pru2E+Ktwkt99Js
+uEjjbnfjQi4AOdcxo/sgXL5vznhuZGNyqvnDjSLsAEx+mvtbYJKfdIHT7tIAYlde
+sqTStSa19gOKXZMqy5TbprKanT4K+6/7WKPrhbwh3ZTYBg7bais=
+=bWNH
+-----END PGP SIGNATURE-----
