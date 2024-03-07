@@ -65,8 +65,8 @@ rpmbuild -bb ~/rpmbuild/SPECS/shibboleth.spec --with fastcgi
 if [ -z "$GPG_SIGNING_KEY" ]; then
     echo "No GPG key provided. This is ok, if you test the build. But IT SHOULD NEVER HAPPEN ON REGULAR BUILD! Skip signing RPM package."
 else
+    GPG_NAME=$(echo -n "$GPG_SIGNING_KEY" | base64 --decode | gpg --show-keys --with-colons | grep -m1 "uid:u" | cut -d: -f10)
     echo -n "$GPG_SIGNING_KEY" | base64 --decode | gpg --import
-    GPG_NAME="$(gpg --list-secret-keys | grep uid | sed 's/uid[ ]*//')"
     echo "%_gpg_name $GPG_NAME" >> ~/.rpmmacros
     rpm --addsign ~/rpmbuild/RPMS/x86_64/shibboleth-fastcgi-[0-9]*.x86_64.rpm
 fi

@@ -6,8 +6,8 @@ if [ -z "$GPG_SIGNING_KEY" ]; then
     exit 1
 fi
 dnf install -y gpg rpm-sign
+GPG_NAME=$(echo -n "$GPG_SIGNING_KEY" | base64 --decode | gpg --show-keys --with-colons | grep -m1 "uid:u" | cut -d: -f10)
 echo -n "$GPG_SIGNING_KEY" | base64 --decode | gpg --import
-GPG_NAME="$(gpg --list-secret-keys | grep uid | sed 's/uid[ ]*\[.*\] //')"
 echo "%_gpg_name $GPG_NAME" >> ~/.rpmmacros
 rpm --addsign /repo/*.rpm
 gpg --no-tty --batch --yes --detach-sign --armor /repo/repodata/repomd.xml
