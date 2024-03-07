@@ -7,8 +7,8 @@ cat <<EOF > /etc/apt/sources.list.d/nginx-mod-shibboleth.list
 deb [allow-insecure=yes] file:///repo/ noble multiverse
 EOF
 apt update
-__NGINX_VERSION="$(apt-cache show nginx | grep Version | sed 's/^Version: //' | cut -d- -f1)"
-__NGINX_MOD_SHIBBOLETH_VERSION="$(apt-cache show libnginx-mod-http-shibboleth | grep Version | sed 's/^Version: //')"
+__NGINX_VERSION="$(apt show nginx 2>/dev/null | grep -m1 Version | sed 's/^Version: //' | cut -d- -f1)"
+__NGINX_MOD_SHIBBOLETH_VERSION="$(apt show libnginx-mod-http-shibboleth 2>/dev/null | grep -m1 Version | sed 's/^Version: //')"
 case $__NGINX_MOD_SHIBBOLETH_VERSION in
 "")                 __MODULE_EXISTS="false";;
 $__NGINX_VERSION*)  __MODULE_EXISTS="true";;
