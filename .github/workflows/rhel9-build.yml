@@ -1,0 +1,69 @@
+name: Build Shibboleth packages for RHEL9
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - scripts/rhel/9/*
+      - .github/workflows/rhel9-build.yml
+  schedule:
+    - cron: '30 4 * * *'
+  workflow_dispatch:
+    inputs:
+      force_rebuild_shibboleth:
+        description: 'Force rebuild Shibboleth'
+        required: false
+        default: false
+        type: boolean
+      force_rebuild_shibboleth_modules:
+        description: 'Force rebuild Nginx Shibboleth modules'
+        required: false
+        default: false
+        type: boolean
+
+jobs:
+  rhel9-docker-build:
+    name: Build packages for RHEL9
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout git repo
+        uses: actions/checkout@v3
+        with:
+          lfs: true
+          sparse-checkout: |
+            repo/rhel/9
+            scripts/rhel/9
+          ssh-key: ${{ secrets.DEPLOY_SSH_KEY }}
+
+      - name: Build Shibboleth Nginx modules for RHEL9
+        run: >
+          docker run --rm
+          -v ${{ github.workspace }}/repo/rhel/9:/repo
+          -v ${{ github.workspace }}/scripts/rhel/9:/scripts:ro
+          -e FORCE_REBUILD_SHIBBOLETH_MODULES=$FORCE_REBUILD_SHIBBOLETH_MODULES
+          -e GPG_SIGNING_KEY=$GPG_SIGNING_KEY
+          rockylinux:9
+          /bin/bash /scripts/cron-build-nginx-mods.sh
+        env:
+          FORCE_REBUILD_SHIBBOLETH_MODULES: ${{ inputs.force_rebuild_shibboleth_modules }}
+          GPG_SIGNING_KEY: ${{ secrets.GPG_SIGNING_KEY }}
+
+      - name: Build Shibboleth package with FastCGI support for RHEL9
+        run: >
+          docker run --rm
+          -v ${{ github.workspace }}/repo/rhel/9:/repo
+          -v ${{ github.workspace }}/scripts/rhel/9:/scripts:ro
+          -e FORCE_REBUILD_SHIBBOLETH=$FORCE_REBUILD_SHIBBOLETH
+          -e GPG_SIGNING_KEY=$GPG_SIGNING_KEY
+          rockylinux:9
+          /bin/bash /scripts/cron-build-shibboleth.sh
+        env:
+          FORCE_REBUILD_SHIBBOLETH: ${{ inputs.force_rebuild_shibboleth }}
+          GPG_SIGNING_KEY: ${{ secrets.GPG_SIGNING_KEY }}
+
+      - name: Commit RHEL9 RPMs
+        run: |
+          git config --global user.name 'GitHub build bot'
+          git config --global user.email 'buildbot@users.noreply.github.com'
+          (git add repo/rhel/9/*.rpm && git commit -m "[automated] RHEL9 packages added" && git push) || echo "No new packages found, skip updating."

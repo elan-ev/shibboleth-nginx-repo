@@ -90,6 +90,42 @@
           dnf install -y shibboleth-fastcgi nginx nginx-mod-http-shibboleth<br>
         </code>
 
+        <h2>Installation on RedHat Linux 9</h2>
+        <code>
+          # Install Shibboleth's recommended Service Provider repo as per<br>
+          # <a href="https://shibboleth.net/downloads/service-provider/RPMS/">https://shibboleth.net/downloads/service-provider/RPMS/</a><br>
+          cat <<-EOF > /etc/yum.repos.d/shibboleth.repo<br>
+          [shibboleth]<br>
+          name=Shibboleth (rockylinux9)<br>
+          # Please report any problems to https://shibboleth.atlassian.net/jira<br>
+          type=rpm-md<br>
+          mirrorlist=https://shibboleth.net/cgi-bin/mirrorlist.cgi/rockylinux9<br>
+          gpgcheck=1<br>
+          gpgkey=https://shibboleth.net/downloads/service-provider/RPMS/repomd.xml.key<br>
+          &nbsp &nbsp &nbsp &nbsp https://shibboleth.net/downloads/service-provider/RPMS/cantor.repomd.xml.key<br>
+          enabled=1<br>
+          EOF<br>
+          <br>
+          # Import Shibboleth's GPG keys<br>
+          rpm --import https://shibboleth.net/downloads/service-provider/RPMS/repomd.xml.key<br>
+          rpm --import https://shibboleth.net/downloads/service-provider/RPMS/cantor.repomd.xml.key<br>
+          <br>
+          # Install Shibboleth-nginx repository<br>
+          cat <<-EOF > /etc/yum.repos.d/shibboleth-nginx.repo<br>
+          [shibboleth-nginx]<br>
+          name=Shibboleth Nginx packages - RHEL\$releasever<br>
+          baseurl=https://elan-ev.github.io/shibboleth-nginx-repo/rhel/\$releasever/<br>
+          gpgcheck=1<br>
+          gpgkey=https://elan-ev.github.io/shibboleth-nginx-repo/gpgkey.asc<br>
+          enabled=1<br>
+          EOF<br>
+          <br>
+          rpm --import https://elan-ev.github.io/shibboleth-nginx-repo/gpgkey.asc<br>
+          # Install Shibboleth Service Provider daemon and Nginx<br>
+          dnf install -y epel-release<br>
+          dnf install -y shibboleth-fastcgi nginx nginx-mod-http-shibboleth<br>
+        </code>
+
         <h2>Installation on Debian Linux</h2>
         <p>
           Shibboleth service provider (SP) application is delivered by Debian itself. The missing Shibboleth Nginx module is provided by this repository. Following steps describes the installation on Debian Bookworm.<br>
