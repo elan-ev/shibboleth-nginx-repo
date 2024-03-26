@@ -47,8 +47,8 @@ Date: $(date -Ru)
 $(hash_files multiverse/binary-amd64/Packages*)
 EOF
 # Sign repo
-apt install -y gpg
-GPG_KEY_ID=$(echo -n "$GPG_SIGNING_KEY" | base64 --decode | gpg --show-keys --with-colons | grep -m1 "sec:u" | cut -d: -f5)
+apt install -y gpg gpg-agent
+GPG_KEY_ID=$(echo -n "$GPG_SIGNING_KEY" | base64 --decode | gpg --show-keys --with-colons | grep -m1 "sec:" | cut -d: -f5)
 echo -n "$GPG_SIGNING_KEY" | base64 --decode | gpg --import
 cat Release | gpg -u "$GPG_KEY_ID" -abs > Release.gpg
 cat Release | gpg -u "$GPG_KEY_ID" -abs --clearsign > InRelease
