@@ -7,7 +7,7 @@ _FORCE_RECREATE_REPO="${FORCE_RECREATE_REPO:-false}"
 dnf install -y createrepo gpg
 
 pushd /repo 2>/dev/null
-if [ "true" == "$_FORCE_RECREATE_REPO" ]
+if [ "true" == "$_FORCE_RECREATE_REPO" ] || [ ! -f "/repo/repodata/repomd.xml" ]
 then
     echo "Recreate RPM repository"
     createrepo .

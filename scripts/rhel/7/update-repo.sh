@@ -8,7 +8,7 @@ set -e
 yum install -y createrepo gpg
 
 pushd /repo 2>/dev/null
-if [ "true" == "$_FORCE_RECREATE_REPO" ]
+if [ "true" == "$_FORCE_RECREATE_REPO" ] || [ ! -f "/repo/repodata/repomd.xml" ]
 then
     echo "Recreate RPM repository"
     createrepo .
