@@ -7,6 +7,7 @@ apt update
 DEBIAN_FRONTEND=noninteractive apt install -y tzdata
 apt install -y sed
 sed -i 's/^#\s*deb-src/deb-src/g' /etc/apt/sources.list
+sed -i 's/^Types: deb$/Types: deb deb-src/g' /etc/apt/sources.list.d/*.sources
 apt update
 apt install -y dpkg-dev wget
 apt build-dep -y nginx
