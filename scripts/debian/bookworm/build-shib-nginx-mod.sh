@@ -18,7 +18,7 @@ tar xf "nginx-$NGINX_VERSION.tar.gz"
 wget -O - https://github.com/nginx-shib/nginx-http-shibboleth/archive/refs/tags/v"$_NGINX_MOD_SHIBBOLETH_VERSION".tar.gz | tar -xz
 NGINX_MOD_SHIBBOLETH_PATH="$(readlink -f nginx-http-shibboleth-$_NGINX_MOD_SHIBBOLETH_VERSION)"
 cd nginx-"$NGINX_VERSION"
-./configure --add-dynamic-module="$NGINX_MOD_SHIBBOLETH_PATH"
+./configure --with-compat --add-dynamic-module="$NGINX_MOD_SHIBBOLETH_PATH"
 make modules
 cd ..
 PKG_ROOT="libnginx-mod-http-shibboleth_$NGINX_VERSION.$_NGINX_MOD_SHIBBOLETH_VERSION-1_amd64"
