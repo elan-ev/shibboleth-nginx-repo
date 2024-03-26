@@ -42,6 +42,19 @@ EOF
 cat /scripts/nginx-mod-http-shibboleth.spec >> nginx-mod-http-shibboleth.spec
 rpmbuild -bb nginx-mod-http-shibboleth.spec
 popd
+
+# Sign package
+if [ -z "$GPG_SIGNING_KEY" ]; then
+    echo "No GPG key provided. This is ok, if you test the build. But IT SHOULD NEVER HAPPEN ON REGULAR BUILD! Skip signing RPM packages."
+else
+    GPG_NAME=$(echo -n "$GPG_SIGNING_KEY" | base64 --decode | gpg --show-keys --with-colons | grep -m1 "uid:" | cut -d: -f10)
+    echo -n "$GPG_SIGNING_KEY" | base64 --decode | gpg --import
+    echo "%_gpg_name $GPG_NAME" >> ~/.rpmmacros
+    rpm --addsign \
+        ~/rpmbuild/RPMS/x86_64/nginx-mod-http-headers-more-filter-$_NGINX_MOD_HEADERS_MORE_VERSION*.rpm \
+        ~/rpmbuild/RPMS/x86_64/nginx-mod-http-shibboleth-$_NGINX_MOD_SHIBBOLETH_VERSION*.rpm
+fi
+
 # move rpms to repo directory
 mv ~/rpmbuild/RPMS/x86_64/nginx-mod-http-headers-more-filter-$_NGINX_MOD_HEADERS_MORE_VERSION*.rpm /repo/
 mv ~/rpmbuild/RPMS/x86_64/nginx-mod-http-shibboleth-$_NGINX_MOD_SHIBBOLETH_VERSION*.rpm /repo/

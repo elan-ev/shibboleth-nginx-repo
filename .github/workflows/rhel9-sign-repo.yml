@@ -1,0 +1,34 @@
+name: Sign RHEL9 RPM repo
+
+on:
+  workflow_dispatch:
+
+jobs:
+  rhel9-sign-repo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout git repo
+        uses: actions/checkout@v3
+        with:
+          lfs: true
+          sparse-checkout: |
+            repo/rhel/9
+            scripts/rhel/9
+          ssh-key: ${{ secrets.DEPLOY_SSH_KEY }}
+
+      - name: Sign RHEL9 RPM repository
+        run: >
+          docker run --rm
+          -v ${{ github.workspace }}/repo/rhel/9:/repo
+          -v ${{ github.workspace }}/scripts/rhel/9:/scripts:ro
+          -e GPG_SIGNING_KEY=$GPG_SIGNING_KEY
+          rockylinux:9
+          /bin/bash /scripts/sign-packages-and-repo.sh
+        env:
+          GPG_SIGNING_KEY: ${{ secrets.GPG_SIGNING_KEY }}
+
+      - name: Commit RHEL9 RPM repo
+        run: |
+          git config --global user.name 'GitHub build bot'
+          git config --global user.email 'buildbot@users.noreply.github.com'
+          (git add repo/rhel/9/*.rpm && git add repo/rhel/9/repodata && git commit -m "[automated] RHEL9 RPM repo signed" && git push) || echo "No new packages found, skip updating."
