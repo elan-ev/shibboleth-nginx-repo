@@ -24,7 +24,7 @@ wget -O - https://github.com/nginx-shib/nginx-http-shibboleth/archive/refs/tags/
 NGINX_MOD_SHIBBOLETH_PATH="$(readlink -f nginx-http-shibboleth-$_NGINX_MOD_SHIBBOLETH_VERSION)"
 # build nginx modules
 pushd /build/nginx-"$NGINX_VERSION"
-./configure --add-dynamic-module="$NGINX_MOD_HEADERS_MORE_PATH" --add-dynamic-module="$NGINX_MOD_SHIBBOLETH_PATH"
+./configure --with-compat --add-dynamic-module="$NGINX_MOD_HEADERS_MORE_PATH" --add-dynamic-module="$NGINX_MOD_SHIBBOLETH_PATH"
 make modules
 popd
 # create rpms
