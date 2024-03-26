@@ -62,7 +62,7 @@ jobs:
           FORCE_REBUILD_SHIBBOLETH: ${{ inputs.force_rebuild_shibboleth }}
           GPG_SIGNING_KEY: ${{ secrets.GPG_SIGNING_KEY }}
 
-      - name: Commit RHEL7 RPMs
+      - name: Commit RHEL8 RPMs
         run: |
           git config --global user.name 'GitHub build bot'
           git config --global user.email 'buildbot@users.noreply.github.com'
