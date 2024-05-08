@@ -5,13 +5,13 @@ Version: 20.04
 Architectures: amd64
 Components: multiverse
 Description: This repository provides a build of Shibboleth auth request module for Nginx.
-Date: Tue, 26 Mar 2024 20:58:25 +0000
+Date: Wed, 08 May 2024 11:41:57 +0000
 MD5Sum:
- 121d316377da6d9a9e7e4ead35f27d6b 530 multiverse/binary-amd64/Packages
- 3951d746974894e2768c37c196d40381 375 multiverse/binary-amd64/Packages.gz
+ b2e9d34133eb0af4b18d6c8b984ff53f 530 multiverse/binary-amd64/Packages
+ bd6cf489fe50f60b407cc61cc767f351 376 multiverse/binary-amd64/Packages.gz
 SHA1:
- 80974857e2be6cf2886535927460308eba45082e 530 multiverse/binary-amd64/Packages
- f3ae1e3a8ad9cae48c4a7f28b508c2c656a3859e 375 multiverse/binary-amd64/Packages.gz
+ bf65045c490a7161f36ba9adbfc429f793c2a453 530 multiverse/binary-amd64/Packages
+ 229c2b5212c540185de7e4e573bb520809301a71 376 multiverse/binary-amd64/Packages.gz
 SHA256:
- 331780cb1a8921e14b54443a159408b18725d1b08f1de4bc67c5afd8f0295463 530 multiverse/binary-amd64/Packages
- d26b7aeae568ed256dd01f8181d78994bd1828fc5905c916240dcd73c56937e1 375 multiverse/binary-amd64/Packages.gz
+ 338a0e195a8e0df72c4d7c01acb0d2ccf1fc0b4bcb5225d0aa1d16753b837073 530 multiverse/binary-amd64/Packages
+ c853b5b6ccf6f71ffa85e1919ef240eed54d5e2bc113be64260187e93f1afbed 376 multiverse/binary-amd64/Packages.gz
