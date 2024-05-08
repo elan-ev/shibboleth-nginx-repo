@@ -72,6 +72,7 @@ Architecture: amd64
 Homepage: https://github.com/nginx-shib/nginx-http-shibboleth
 Description: Shibboleth auth request module for Nginx
 EOF
+install -o root -g root -m 0755 -p /scripts/postinst /scripts/postrm "$PKG_ROOT/DEBIAN/"
 dpkg --build "$PKG_ROOT"
 echo "Build package complete"
 #echo "Package metadata:"
