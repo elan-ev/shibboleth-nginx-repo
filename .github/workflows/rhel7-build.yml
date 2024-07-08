@@ -1,14 +1,6 @@
 name: Build Shibboleth packages for RHEL7
 
 on:
-  push:
-    branches:
-      - main
-    paths:
-      - scripts/rhel/7/*
-      - .github/workflows/rhel7-build.yml
-  schedule:
-    - cron: '0 6 * * *'
   workflow_dispatch:
     inputs:
       force_rebuild_shibboleth:
