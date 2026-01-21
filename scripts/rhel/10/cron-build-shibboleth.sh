@@ -8,18 +8,16 @@ set -e
 # https://shibboleth.net/downloads/service-provider/RPMS/
 cat <<EOF > /etc/yum.repos.d/shibboleth.repo
 [shibboleth]
-name=Shibboleth (rockylinux9)
+name=Shibboleth (rockylinux10)
 # Please report any problems to https://shibboleth.atlassian.net/jira
 type=rpm-md
 mirrorlist=https://shibboleth.net/cgi-bin/mirrorlist.cgi/rockylinux10
 gpgcheck=1
-gpgkey=https://shibboleth.net/downloads/service-provider/RPMS/repomd.xml.key
-        https://shibboleth.net/downloads/service-provider/RPMS/cantor.repomd.xml.key
+gpgkey=https://shibboleth.net/downloads/service-provider/RPMS/cantor.repomd.xml.key
 enabled=1
 EOF
 
 # Import Shibboleth's GPG keys
-rpm --import https://shibboleth.net/downloads/service-provider/RPMS/repomd.xml.key
 rpm --import https://shibboleth.net/downloads/service-provider/RPMS/cantor.repomd.xml.key
 
 if [ -f "/repo/repodata/repomd.xml" ]; then
