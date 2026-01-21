@@ -23,7 +23,7 @@ on:
         type: boolean
 
 jobs:
-  rhel9-docker-build:
+  rhel10-docker-build:
     name: Build packages for RHEL10
     runs-on: ubuntu-latest
     steps:
@@ -32,18 +32,18 @@ jobs:
         with:
           lfs: true
           sparse-checkout: |
-            repo/rhel/9
-            scripts/rhel/9
+            repo/rhel/10
+            scripts/rhel/10
           ssh-key: ${{ secrets.DEPLOY_SSH_KEY }}
 
       - name: Build Shibboleth Nginx modules for RHEL10
         run: >
           docker run --rm
-          -v ${{ github.workspace }}/repo/rhel/9:/repo
-          -v ${{ github.workspace }}/scripts/rhel/9:/scripts:ro
+          -v ${{ github.workspace }}/repo/rhel/10:/repo
+          -v ${{ github.workspace }}/scripts/rhel/10:/scripts:ro
           -e FORCE_REBUILD_SHIBBOLETH_MODULES=$FORCE_REBUILD_SHIBBOLETH_MODULES
           -e GPG_SIGNING_KEY=$GPG_SIGNING_KEY
-          rockylinux:9
+          rockylinux:10
           /bin/bash /scripts/cron-build-nginx-mods.sh
         env:
           FORCE_REBUILD_SHIBBOLETH_MODULES: ${{ inputs.force_rebuild_shibboleth_modules }}
@@ -52,11 +52,11 @@ jobs:
       - name: Build Shibboleth package with FastCGI support for RHEL10
         run: >
           docker run --rm
-          -v ${{ github.workspace }}/repo/rhel/9:/repo
-          -v ${{ github.workspace }}/scripts/rhel/9:/scripts:ro
+          -v ${{ github.workspace }}/repo/rhel/10:/repo
+          -v ${{ github.workspace }}/scripts/rhel/10:/scripts:ro
           -e FORCE_REBUILD_SHIBBOLETH=$FORCE_REBUILD_SHIBBOLETH
           -e GPG_SIGNING_KEY=$GPG_SIGNING_KEY
-          rockylinux:9
+          rockylinux:10
           /bin/bash /scripts/cron-build-shibboleth.sh
         env:
           FORCE_REBUILD_SHIBBOLETH: ${{ inputs.force_rebuild_shibboleth }}
@@ -66,4 +66,4 @@ jobs:
         run: |
           git config --global user.name 'GitHub build bot'
           git config --global user.email 'buildbot@users.noreply.github.com'
-          (git add repo/rhel/9/*.rpm && git commit -m "[automated] RHEL10 packages added" && git push) || echo "No new packages found, skip updating."
+          (git add repo/rhel/10/*.rpm && git commit -m "[automated] RHEL10 packages added" && git push) || echo "No new packages found, skip updating."

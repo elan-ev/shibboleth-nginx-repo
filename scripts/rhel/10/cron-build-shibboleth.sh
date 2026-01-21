@@ -11,7 +11,7 @@ cat <<EOF > /etc/yum.repos.d/shibboleth.repo
 name=Shibboleth (rockylinux9)
 # Please report any problems to https://shibboleth.atlassian.net/jira
 type=rpm-md
-mirrorlist=https://shibboleth.net/cgi-bin/mirrorlist.cgi/rockylinux9
+mirrorlist=https://shibboleth.net/cgi-bin/mirrorlist.cgi/rockylinux10
 gpgcheck=1
 gpgkey=https://shibboleth.net/downloads/service-provider/RPMS/repomd.xml.key
         https://shibboleth.net/downloads/service-provider/RPMS/cantor.repomd.xml.key
