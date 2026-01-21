@@ -1,0 +1,17 @@
+Origin: Shibboleth Nginx Module Repository
+Suite: stable
+Codename: trixie
+Version: 1.0
+Architectures: amd64
+Components: non-free
+Description: This repository provides a build of Shibboleth auth request module for Nginx.
+Date: Wed, 21 Jan 2026 12:18:35 +0000
+MD5Sum:
+ 4eac6a3405257560d8339ba235d256ff 528 non-free/binary-amd64/Packages
+ 4f4ce5cb57429afede6f40e1fb846577 375 non-free/binary-amd64/Packages.gz
+SHA1:
+ a67a0b4e3bba09c896e8a10f377cd94bfd918d0f 528 non-free/binary-amd64/Packages
+ f5d81b445d8bc58faac5f2f20a4addf2ca820e40 375 non-free/binary-amd64/Packages.gz
+SHA256:
+ 42165f7ba5fb594035688b68e21d77035282dffbbf16046ecc96a963f45673d2 528 non-free/binary-amd64/Packages
+ a1d6e8361133e32e6e6aec43732e01ad48956a395200de74ee8092bc3690e820 375 non-free/binary-amd64/Packages.gz
