@@ -43,7 +43,7 @@ jobs:
           -v ${{ github.workspace }}/scripts/rhel/10:/scripts:ro
           -e FORCE_REBUILD_SHIBBOLETH_MODULES=$FORCE_REBUILD_SHIBBOLETH_MODULES
           -e GPG_SIGNING_KEY=$GPG_SIGNING_KEY
-          rockylinux:10
+          quay.io/rockylinux/rockylinux:10
           /bin/bash /scripts/cron-build-nginx-mods.sh
         env:
           FORCE_REBUILD_SHIBBOLETH_MODULES: ${{ inputs.force_rebuild_shibboleth_modules }}
@@ -56,7 +56,7 @@ jobs:
           -v ${{ github.workspace }}/scripts/rhel/10:/scripts:ro
           -e FORCE_REBUILD_SHIBBOLETH=$FORCE_REBUILD_SHIBBOLETH
           -e GPG_SIGNING_KEY=$GPG_SIGNING_KEY
-          rockylinux:10
+          quay.io/rockylinux/rockylinux:10
           /bin/bash /scripts/cron-build-shibboleth.sh
         env:
           FORCE_REBUILD_SHIBBOLETH: ${{ inputs.force_rebuild_shibboleth }}
