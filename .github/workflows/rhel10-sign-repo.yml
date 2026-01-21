@@ -22,7 +22,7 @@ jobs:
           -v ${{ github.workspace }}/repo/rhel/10:/repo
           -v ${{ github.workspace }}/scripts/rhel/10:/scripts:ro
           -e GPG_SIGNING_KEY=$GPG_SIGNING_KEY
-          rockylinux:10
+          quay.io/rockylinux/rockylinux:10
           /bin/bash /scripts/sign-packages-and-repo.sh
         env:
           GPG_SIGNING_KEY: ${{ secrets.GPG_SIGNING_KEY }}
