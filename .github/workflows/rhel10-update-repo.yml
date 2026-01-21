@@ -1,0 +1,48 @@
+name: Udpate RHEL10 RPM repo
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - repo/rhel/10/*.rpm
+      - .github/workflows/rhel10-update-repo.yml
+  workflow_dispatch:
+    inputs:
+      force_recreate_repo:
+        description: 'Force recreate RPM repository'
+        required: false
+        type: boolean
+        default: false
+
+jobs:
+  rhel10-update-repo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout git repo
+        uses: actions/checkout@v6
+        with:
+          lfs: true
+          sparse-checkout: |
+            repo/rhel/10
+            scripts/rhel/10
+          ssh-key: ${{ secrets.DEPLOY_SSH_KEY }}
+
+      - name: Update RHEL10 RPM repository
+        run: >
+          docker run --rm
+          -v ${{ github.workspace }}/repo/rhel/10:/repo
+          -v ${{ github.workspace }}/scripts/rhel/10:/scripts:ro
+          -e FORCE_RECREATE_REPO=$FORCE_RECREATE_REPO
+          -e GPG_SIGNING_KEY=$GPG_SIGNING_KEY
+          rockylinux:10
+          /bin/bash /scripts/update-repo.sh
+        env:
+          FORCE_RECREATE_REPO: ${{ inputs.force_recreate_repo }}
+          GPG_SIGNING_KEY: ${{ secrets.GPG_SIGNING_KEY }}
+
+      - name: Commit RHEL10 RPM repo
+        run: |
+          git config --global user.name 'GitHub build bot'
+          git config --global user.email 'buildbot@users.noreply.github.com'
+          (git add repo/rhel/10/repodata && git commit -m "[automated] RHEL10 RPM repo updated" && git push) || echo "No new packages found, skip updating."
