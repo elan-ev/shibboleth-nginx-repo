@@ -4,10 +4,10 @@ Architecture: amd64
 Maintainer: ELAN e.V. <helpdesk@elan-ev.de>
 Depends: nginx-common (>= 1.22.1)
 Filename: pool/non-free/libnginx-mod-http-shibboleth_1.22.1.2.0.2-1_amd64.deb
-Size: 32028
-MD5sum: 4ec9e7d85f33896e47eef1dd41518de3
-SHA1: a9ad2a34003db70d719cb224fb2279fae3cb17bd
-SHA256: 23c0cfe59029747dbeff1db7bdf69901f9af252e64369a8b3619937bf799c10b
+Size: 32008
+MD5sum: b879f50f46314e8b3e579e81202c4bec
+SHA1: 2d062085474d2fa2e7d02fd7a16dc86491f163b0
+SHA256: 8365a0fe57bd8ffba99985925d48a64cd20479b429a8d20ade861b2a38c6ad33
 Homepage: https://github.com/nginx-shib/nginx-http-shibboleth
 Description: Shibboleth auth request module for Nginx
 
