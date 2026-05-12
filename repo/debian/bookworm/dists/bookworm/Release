@@ -5,13 +5,13 @@ Version: 1.0
 Architectures: amd64
 Components: non-free
 Description: This repository provides a build of Shibboleth auth request module for Nginx.
-Date: Mon, 11 May 2026 03:14:38 +0000
+Date: Tue, 12 May 2026 03:12:41 +0000
 MD5Sum:
- c487680f730998c2b4425a222eb5d0b0 528 non-free/binary-amd64/Packages
- d84adc0a5d882bac2e86b9780f63bf97 375 non-free/binary-amd64/Packages.gz
+ 7f2e8f8b62590f6325ab5482c7bcb6c8 528 non-free/binary-amd64/Packages
+ be1d00df278029935a9fac42a5535c7f 375 non-free/binary-amd64/Packages.gz
 SHA1:
- ef267981d16e3de84f395639a4e0b0c6ec07a387 528 non-free/binary-amd64/Packages
- b634e26076289e1c214d56d4f5867f3e7a83e9d6 375 non-free/binary-amd64/Packages.gz
+ 3648292d5b5c9503b4f843334e8b7520653fee04 528 non-free/binary-amd64/Packages
+ f5326985c601a4cc1f797a83f3fe343df8db0a0b 375 non-free/binary-amd64/Packages.gz
 SHA256:
- 21b22b237065d5a27ece2ff84ef0e1eaf21125160ec418f01d39b068484de4ca 528 non-free/binary-amd64/Packages
- 83e3c440f7e6243e05aaa99be6ae8b9ef47684691e04e64624cbc74d24702430 375 non-free/binary-amd64/Packages.gz
+ e8041ab4bccfb0694b862055f27fcdfe1125d9e4d6d54a04995b8d71b8dc8de0 528 non-free/binary-amd64/Packages
+ 5ab2f57666cd28d167a85ab5ce6ecf61ea45b6bae33f744b94673e051f20410c 375 non-free/binary-amd64/Packages.gz
