@@ -8,29 +8,29 @@ Version: 1.0
 Architectures: amd64
 Components: non-free
 Description: This repository provides a build of Shibboleth auth request module for Nginx.
-Date: Thu, 09 Jul 2026 06:24:46 +0000
+Date: Fri, 10 Jul 2026 06:04:58 +0000
 MD5Sum:
- 28671ec23e26a46326a2e0bf3fc3b578 528 non-free/binary-amd64/Packages
- 751c7dd88b8da93ab68ea9745dd75c8d 375 non-free/binary-amd64/Packages.gz
+ ed12cb36dc28c1f0a4019008bb97dd01 528 non-free/binary-amd64/Packages
+ a5551437a892e292f23799b85fea97b7 374 non-free/binary-amd64/Packages.gz
 SHA1:
- 4d4b03cf8c6f4c1645e625f255bd93c042f3c308 528 non-free/binary-amd64/Packages
- c17136b927f58bba8d0172ffa694a04560be4bdb 375 non-free/binary-amd64/Packages.gz
+ fc31fdbf0267f3be96c921c02ae56d3cbac04f8c 528 non-free/binary-amd64/Packages
+ 6353a0e112e7fbc3676a863702bc25c6f9fe34fe 374 non-free/binary-amd64/Packages.gz
 SHA256:
- ccacdff4753e147ba3f15dce0716194f318200a60391a0998f03af0a94b1effb 528 non-free/binary-amd64/Packages
- 223aad9f59391d424bad190fd9ca744f0243f67482a811aec523d8af4994f112 375 non-free/binary-amd64/Packages.gz
+ a6e65695859beb2a3d2b383f83e034e2ec0f994501a94a9031dc1beea2aa3bd1 528 non-free/binary-amd64/Packages
+ d8459c0c90dca4ea3701c90607a04cd5ce73463f0737976fdc4902e0219ea40a 374 non-free/binary-amd64/Packages.gz
 -----BEGIN PGP SIGNATURE-----
 
-iQIzBAEBCgAdFiEE+tfQOzhsifEILKfLehYWe/cdL5EFAmpPPq4ACgkQehYWe/cd
-L5H1rRAAg/jsF5XZ21vjWWTPuJ7IUtmBz90dG/TUlB5w9VrUgwxYp6ig7hal9SKd
-L8tFGv1uuvzOeAFSIJJrxletQFlTulWtrgpCikT4cbip5220dEOH4NguVzdwv4Yl
-RTxpprQGED9Gv6vZqWCkqaw7ti+IYOGifRHxUasz86yWjH/EjbNgTB4vrOFv7B4a
-2qQ/qAdpB4f5KTgvR05OtogK1hDZGNU4GRYDOYt+Tj6O3wYXKNwIF4CcNJR4L4j+
-pCHyPFwgrpOYQIlIFtT/K4YiXa8cL4hfGf1Xvf8K93Xrx3kq1GWyBSS5ClkqvWSD
-QAte/Kr45AaVmefLMvIZ6zqTJlJElt20lXJeskB2vXiUkzfbIQie+nZb/QkKQz9N
-K1zpG8iUF1LuWyI86Aj8vcOx9T5b7GIHoRHnMOmhv5v8rx1gwTMOrWMPtf4+uWuU
-KLdJu2/fwDWXMdquWwBYnF1R9In0Q6NmxzDKgq15tAbswlUwhPzBjFXMg2A07uHu
-mEM5QyQOOJKUfMZeM4PZeXA0f99XF0DwEU/SMvvfFaRsOA8AsP5ZLTT4OKbEdnnW
-O5aa1B33FEcL1vzRHbkelEcoA8AgL96CqaZwlQQnEBMC3s1zbjHtoiZ8zPPDr5It
-/Q+aKuniB+qa0r5OyWefYzWI5BIpxEQ2XFGb9DQiu4L2zLnV+uM=
-=mqCn
+iQIzBAEBCgAdFiEE+tfQOzhsifEILKfLehYWe/cdL5EFAmpQi4sACgkQehYWe/cd
+L5G15g/9EU1Tq9Y8+an9dunjy/P3WGU/DWhNYgZaAUzirUcvP7KYtuDrp2EiwpLn
+CiJB1ybln6Kturay1gLRCYhzlUSBYBwEsS0UfjmT70DZEbt3QWeXm8y4FS4Vr8qN
+Un6oOqiF1+jr9IGEqs5HT6CeVmj+lf72JTfF9X/82x7QUabCTLFnkBQnpNIhwicw
+FWZtZenj6y71uVSqpwNrdWqjZfjZjNd2IqtTj4H0xcJQQmxVRFIwydOrh0echkGw
+fwQtShHvTF5mabGZVlrIVgk1U8SLxfw1UOe2Gb+ZsPq1jXYg1gwQNYxG2wNHlS6I
+G7QG2H1kx1ZSH+Gt4bXO09R6HRb1iXZ9oxBvfCnkVpXDH965e+WjQh1Dr7fMNuiq
+dVQFRC5XSinjPsnPuJ9DPDVWgGOdxofUXoLfF0pISegWfmpXHxq8ilwBI1xlzMVF
+qIONEzmIYvREvyES3tAHVPldZit7S/hDrhjKmgc83VPakw0mgS6sEG6PDu/4VqJy
+u+D8JnB+Cv4Hn0DHkh7JCtIiuy/HcHMRSofzCUHc4SPNUPsIT5fgEQlUKlPPMbmj
+uR7lcsN1ExAVIz4r9I1MXbjrmTh4bjDjbQLjfCFGqyu+T0/e8BMUBGvcku0PkzHD
+KF68iEp4EdA+eIDoS5xTUdgExNbNkxkG883UBv7FVw0V+2oy5c0=
+=U7gH
 -----END PGP SIGNATURE-----
