@@ -1,0 +1,48 @@
+name: Udpate Ubuntu Resolute repo
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - repo/ubuntu/resolute/pool/multiverse/*.deb
+      - .github/workflows/ubuntu-resolute-update-repo.yml
+  workflow_dispatch:
+    inputs:
+      force_recreate_repo:
+        description: 'Force recreate Ubuntu repository'
+        required: false
+        type: boolean
+        default: false
+
+jobs:
+  ubuntu-resolute-update-repo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout git repo
+        uses: actions/checkout@v6
+        with:
+          lfs: true
+          sparse-checkout: |
+            repo/ubuntu/resolute
+            scripts/ubuntu/resolute
+          ssh-key: ${{ secrets.DEPLOY_SSH_KEY }}
+
+      - name: Update Ubuntu Resolute repository
+        run: >
+          docker run --rm
+          -v ${{ github.workspace }}/repo/ubuntu/resolute:/repo
+          -v ${{ github.workspace }}/scripts/ubuntu/resolute:/scripts:ro
+          -e FORCE_RECREATE_REPO=$FORCE_RECREATE_REPO
+          -e GPG_SIGNING_KEY=$GPG_SIGNING_KEY
+          ubuntu:resolute
+          /bin/bash /scripts/update-repo.sh
+        env:
+          FORCE_RECREATE_REPO: ${{ inputs.force_recreate_repo }}
+          GPG_SIGNING_KEY: ${{ secrets.GPG_SIGNING_KEY }}
+
+      - name: Commit Ubuntu Resolute repo
+        run: |
+          git config --global user.name 'GitHub build bot'
+          git config --global user.email 'buildbot@users.noreply.github.com'
+          (git add repo/ubuntu/resolute/dists/resolute/Release* && git add repo/ubuntu/resolute/dists/resolute/InRelease && git add repo/ubuntu/resolute/dists/resolute/multiverse/binary-amd64/Packages* && git commit -m "[automated] Ubuntu Resolute repo updated" && git pull && git push) || echo "No new packages found, skip updating."
