@@ -45,4 +45,4 @@ jobs:
         run: |
           git config --global user.name 'GitHub build bot'
           git config --global user.email 'buildbot@users.noreply.github.com'
-          (git add repo/rhel/8/repodata && git commit -m "[automated] RHEL8 RPM repo updated" && git push) || echo "No new packages found, skip updating."
+          (git add repo/rhel/8/repodata && git commit -m "[automated] RHEL8 RPM repo updated" && git pull && git push) || echo "No new packages found, skip updating."

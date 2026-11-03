@@ -66,4 +66,4 @@ jobs:
         run: |
           git config --global user.name 'GitHub build bot'
           git config --global user.email 'buildbot@users.noreply.github.com'
-          (git add repo/rhel/9/*.rpm && git commit -m "[automated] RHEL9 packages added" && git push) || echo "No new packages found, skip updating."
+          (git add repo/rhel/9/*.rpm && git commit -m "[automated] RHEL9 packages added" && git pull && git push) || echo "No new packages found, skip updating."
