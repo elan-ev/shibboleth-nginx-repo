@@ -1,0 +1,36 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+Origin: Shibboleth Nginx Module Repository
+Suite: resolute
+Codename: resolute
+Version: 26.04
+Architectures: amd64
+Components: multiverse
+Description: This repository provides a build of Shibboleth auth request module for Nginx.
+Date: Tue, 03 Nov 2026 08:58:45 +0000
+MD5Sum:
+ 1baa605401e38054f2a28109214f7832 530 multiverse/binary-amd64/Packages
+ 3420c81cdf24c819a9e9a8d61d92eeba 377 multiverse/binary-amd64/Packages.gz
+SHA1:
+ 68f5748247143bc21977c09f0e5a3926a5772d82 530 multiverse/binary-amd64/Packages
+ 7ecbc95333268380e26bed7f16490b55632d045c 377 multiverse/binary-amd64/Packages.gz
+SHA256:
+ 457d174b3b6116e59cc79b9e9477317792a492c4e3b426ffcce623154d5f68a7 530 multiverse/binary-amd64/Packages
+ 083455367b25e027dbe5d37f7af3ac93a1714a73e1fa21f99a93896ebd9e24c6 377 multiverse/binary-amd64/Packages.gz
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAEBCgAdFiEE+tfQOzhsifEILKfLehYWe/cdL5EFAmrpokYACgkQehYWe/cd
+L5Ej8A//bFMBT0oGwEsdHcSwchRF3f6lfuE0PWoFvZPdfeqchP9geyBMG+aJu3ZZ
+N468dFVQ2kLOlEsnyEDSGwCFLmW6kEiw50xf+xCHcOpOFz+CFMMMEUgY5QZaoEl9
+xOJkVvE/rdHOkrdiXYrP37VM1PV5WRAXp4yRdCal02UL1Oydjm3+DNbnqYdSd6U6
+lCveDYZ6sz2m7MEG9W/5mlFd0Zo11TMG56DqoRD4xz8nz2flAB4MOyGwNiw0X1Dy
+kqbCxNzh2pXAMWZH2jecP6AjA2vvHN8gzUGKHMTUKt1m2AZIhc/zg+GPneUP3+Yu
+pWt1d3dHuFvJCGJU5ISWJA90mllr4gJYfkIJAdtf6piT04dNrBKLwsbKYd0cDQo8
+R21OJulmpKT328L3frLk/Lv3Cm+3lhSLV7g4LbjaVdkrOtWezdYemCm5h6mirsdM
+DAedIGyiAWzxFGfBYYzfdA1tMtWR7QAMkAMmNFvLUcyQgJTxnCVEB9hGhMYYAQgv
+RToS0JKFeYNiCd2sAw5l4btLaUvfeVL/EwITA7eGoEQbUQhx526wraZ4oabtrj+R
+lQqEwcy01BES0PGbtB8jUM6j1QA0EC64x3ZHeibfOWqJWu0DVbLPHf4mv3haYwJE
+1gpmHGH3nFGA+fszjvUtaPtw6kth688FCLx7VHYh1R8ffic+25g=
+=qo23
+-----END PGP SIGNATURE-----

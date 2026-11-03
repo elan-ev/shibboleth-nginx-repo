@@ -1,0 +1,17 @@
+Origin: Shibboleth Nginx Module Repository
+Suite: resolute
+Codename: resolute
+Version: 26.04
+Architectures: amd64
+Components: multiverse
+Description: This repository provides a build of Shibboleth auth request module for Nginx.
+Date: Tue, 03 Nov 2026 08:58:45 +0000
+MD5Sum:
+ 1baa605401e38054f2a28109214f7832 530 multiverse/binary-amd64/Packages
+ 3420c81cdf24c819a9e9a8d61d92eeba 377 multiverse/binary-amd64/Packages.gz
+SHA1:
+ 68f5748247143bc21977c09f0e5a3926a5772d82 530 multiverse/binary-amd64/Packages
+ 7ecbc95333268380e26bed7f16490b55632d045c 377 multiverse/binary-amd64/Packages.gz
+SHA256:
+ 457d174b3b6116e59cc79b9e9477317792a492c4e3b426ffcce623154d5f68a7 530 multiverse/binary-amd64/Packages
+ 083455367b25e027dbe5d37f7af3ac93a1714a73e1fa21f99a93896ebd9e24c6 377 multiverse/binary-amd64/Packages.gz
